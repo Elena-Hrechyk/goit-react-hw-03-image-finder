@@ -14,16 +14,17 @@ const customStyles = {
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
     zIndex: 1200,
-    TransitionEvent: 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#ffffffae',
+    maxWidth: 'calc(100vw - 48px)',
+    maxHeight: 'calc(100vh - 24px)',
+    padding: 5,
+    border: 'none',
+    position: 'static',
+    borderRadius: 0,
+    overflow: 'hidden',
   },
 };
 
@@ -32,18 +33,16 @@ Modal.setAppElement('#root');
 export const ModalWin = ({ largeImgURL, tags, isOpen, onClose }) => {
   return (
     <>
-      <div>
-        <Modal
-          isOpen={isOpen}
-          onAfterOpen={() => disableBodyScroll(document)}
-          onAfterClose={() => enableBodyScroll(document)}
-          onRequestClose={onClose}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <img src={largeImgURL} alt={tags} />
-        </Modal>
-      </div>
+      <Modal
+        isOpen={isOpen}
+        onAfterOpen={() => disableBodyScroll(document)}
+        onAfterClose={() => enableBodyScroll(document)}
+        onRequestClose={onClose}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <img src={largeImgURL} alt={tags} />
+      </Modal>
     </>
   );
 };
