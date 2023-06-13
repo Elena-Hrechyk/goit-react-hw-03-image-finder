@@ -7,7 +7,11 @@ export const Loader = () => {
       width="80"
       color="#1f51dd"
       ariaLabel="bars-loading"
-      wrapperStyle={{ margin: '0 auto' }}
+      wrapperStyle={{
+        marginTop: '20px',
+        marginBottom: '20px',
+        justifyContent: 'center',
+      }}
       visible={true}
     />
   );

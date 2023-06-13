@@ -38,6 +38,9 @@ export class App extends Component {
       this.setState({ loading: true, error: null });
       const resps = await fetchImages(value, page, this.abortCtrl);
       this.totalImages = resps.total;
+      if (resps.hits.length === 0) {
+        this.setState({ error: 'Ooops! Try again!' });
+      }
 
       this.setState(prevState => ({
         images: [...prevState.images, ...resps.hits],
@@ -85,7 +88,17 @@ export class App extends Component {
         {quantityPages > 1 && quantityPages !== page && !loading && (
           <Button onClick={this.getCurrentPage} />
         )}
-        {error && <h2>{error}</h2>}
+        {error && (
+          <h2
+            
+            style={{
+              marginTop: 30,
+              textAlign: 'center',
+            }}
+          >
+            {error}
+          </h2>
+        )}
       </>
     );
   }
